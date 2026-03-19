@@ -1,0 +1,318 @@
+{
+  "title": "EU AI Act Compliance Assessment Questionnaire",
+  "description": "Assess your AI system for EU AI Act compliance. Complete all MANDATORY questions. Answer CONDITIONAL questions if applicable. OPTIONAL questions are recommended for comprehensive assessment.",
+  "sections": [
+    {
+      "sectionTitle": "System Information",
+      "sectionDescription": "Basic details about your AI system",
+      "questions": [
+        {
+          "id": "system_name",
+          "question": "What is the name of your AI system?",
+          "type": "text",
+          "required": true,
+          "helpText": "Provide a clear, descriptive name for your AI system"
+        },
+        {
+          "id": "system_purpose",
+          "question": "What is the primary purpose and use case of this AI system?",
+          "type": "text",
+          "required": true,
+          "helpText": "Describe what the system is designed to do and in what context it operates"
+        },
+        {
+          "id": "data_types",
+          "question": "What types of data does your system process?",
+          "type": "text",
+          "required": true,
+          "helpText": "List categories of data (e.g., personal information, financial data, biometric data, educational records)"
+        },
+        {
+          "id": "autonomous",
+          "question": "Does your system make autonomous decisions without human intervention?",
+          "type": "choice",
+          "required": true,
+          "options": ["Yes", "No", "Partially (some decisions are autonomous)"],
+          "helpText": "Autonomous = the system makes decisions without human review or input"
+        },
+        {
+          "id": "affects_rights",
+          "question": "Does your system's decisions or operations affect fundamental rights or freedoms?",
+          "type": "choice",
+          "required": true,
+          "options": ["Yes", "No", "Potentially"],
+          "helpText": "Fundamental rights include privacy, freedom of expression, non-discrimination, due process, etc."
+        },
+        {
+          "id": "organization",
+          "question": "What sector/industry does your organization operate in?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Finance/Banking",
+            "Employment/Human Resources",
+            "Education/Training",
+            "Healthcare",
+            "Public Services",
+            "Law Enforcement",
+            "Infrastructure",
+            "E-commerce",
+            "Social Media",
+            "Other"
+          ],
+          "helpText": "Select the primary industry classification"
+        },
+        {
+          "id": "is_education_system",
+          "question": "Is this an education or training related system?",
+          "type": "choice",
+          "required": false,
+          "options": ["Yes", "No"],
+          "helpText": "Answer YES if the system involves student admission, assessment, learning outcomes, exam monitoring, or educational qualifications. This determines if conditional education questions are required."
+        }
+      ]
+    },
+    {
+      "sectionTitle": "MANDATORY Questions (Core Classification)",
+      "sectionDescription": "These 5 questions MUST be answered for all systems. They map to explicit EU AI Act high-risk categories.",
+      "questions": [
+        {
+          "id": "q5_recruitment_selection",
+          "question": "[MANDATORY] Does your system make or significantly influence recruitment or job candidate selection decisions?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Yes - makes final decisions without human review",
+            "Yes - filters/ranks candidates (human makes final decision)",
+            "Yes - but with strong human oversight",
+            "No"
+          ],
+          "guidance": "This includes CV screening, skill assessment, job suitability scoring, or ranking candidates. Employment decisions are an explicit Annex I high-risk category.",
+          "helpText": "Select the option that best describes your system's role in recruitment"
+        },
+        {
+          "id": "q6_employment_conditions",
+          "question": "[MANDATORY] Does your system evaluate or determine employment conditions, work assignments, or employee performance?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Yes - determines employment conditions (pay, training, promotion)",
+            "Yes - monitors/evaluates work performance",
+            "Yes - allocates work tasks or projects",
+            "Yes - but with strong human oversight",
+            "No"
+          ],
+          "guidance": "This includes bonus calculations, promotion eligibility, training opportunities, task allocation, or performance ratings. Employment-related decisions are an explicit Annex I high-risk category.",
+          "helpText": "Select all that apply to your system"
+        },
+        {
+          "id": "q7_biometric_identification",
+          "question": "[MANDATORY] Does your system perform remote biometric identification or use biometric data for verification?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Yes - real-time remote biometric identification (face, iris, fingerprint live matching)",
+            "Yes - uses biometric data but not for real-time remote identification",
+            "Yes - physical biometric verification at a location (e.g., fingerprint scanner at entrance)",
+            "No - does not use biometric data at all"
+          ],
+          "guidance": "Real-time remote biometric identification is PROHIBITED under EU AI Act Article 5, with limited exceptions. Other biometric uses are HIGH_RISK.",
+          "helpText": "Biometric = fingerprint, face recognition, iris scan, voice recognition, etc."
+        },
+        {
+          "id": "q9_critical_infrastructure",
+          "question": "[MANDATORY] Is your system a critical component of critical infrastructure that could affect safety or availability of essential services?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Yes - manages critical infrastructure (power grid, water, transport, communications)",
+            "Yes - important but not critical infrastructure",
+            "No - not infrastructure related",
+            "Unsure"
+          ],
+          "guidance": "Critical infrastructure systems are an explicit Annex I high-risk category. Examples: electricity grids, water systems, transportation networks, emergency services.",
+          "helpText": "Critical infrastructure = systems essential to society's functioning (energy, water, transport, communications)"
+        },
+        {
+          "id": "q10_credit_scoring",
+          "question": "[MANDATORY] Does your system assess credit scoring, creditworthiness, loan decisions, or financial risk?",
+          "type": "choice",
+          "required": true,
+          "options": [
+            "Yes - makes loan or credit decisions",
+            "Yes - scores creditworthiness or financial risk",
+            "Yes - sets credit limits or financial terms",
+            "Yes - but human makes final decision",
+            "No - not involved in credit or financial decisions"
+          ],
+          "guidance": "Credit and financial risk assessment are explicit Annex I high-risk categories due to affect on access to financial services.",
+          "helpText": "Includes: loan approval, credit scoring, credit limit setting, financial risk assessment"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "CONDITIONAL Questions (Education Systems Only)",
+      "sectionDescription": "ONLY answer these questions if your system is related to education or training. If you answered 'No' to the education question above, you can skip this section.",
+      "questions": [
+        {
+          "id": "q1_education_admission",
+          "question": "[CONDITIONAL] Does your system assist in education or training admission, assignment, or enrollment decisions?",
+          "type": "choice",
+          "required": false,
+          "showIfQuestion": "is_education_system",
+          "showIfAnswer": "Yes",
+          "options": [
+            "Yes - makes or recommends admission/rejection decisions",
+            "Yes - ranks or filters applicants",
+            "Yes - assigns students to programs/tracks",
+            "Yes - but human makes final decision",
+            "No"
+          ],
+          "guidance": "Education access decisions are a high-risk category. Include: university admission, course assignment, track assignment.",
+          "helpText": "This question is only shown if you indicated this is an education system"
+        },
+        {
+          "id": "q2_learning_outcomes",
+          "question": "[CONDITIONAL] Does your system determine or predict learning outcomes or academic performance?",
+          "type": "choice",
+          "required": false,
+          "showIfQuestion": "is_education_system",
+          "showIfAnswer": "Yes",
+          "options": [
+            "Yes - predicts student success or learning outcomes",
+            "Yes - identifies learning gaps or struggles",
+            "Yes - recommends interventions or support",
+            "Yes - but with human review",
+            "No"
+          ],
+          "guidance": "Systems predicting educational outcomes can affect student opportunities and affect important life choices.",
+          "helpText": "This question is only shown if you indicated this is an education system"
+        },
+        {
+          "id": "q3_education_level",
+          "question": "[CONDITIONAL] Does your system evaluate or verify education level, qualifications, or skills?",
+          "type": "choice",
+          "required": false,
+          "showIfQuestion": "is_education_system",
+          "showIfAnswer": "Yes",
+          "options": [
+            "Yes - assesses qualification level (degree level, skill level)",
+            "Yes - verifies credentials or certifications",
+            "Yes - determines competency levels",
+            "Yes - with human oversight",
+            "No"
+          ],
+          "guidance": "Education/qualification assessment is a high-risk category when it affects access to education or employment.",
+          "helpText": "This question is only shown if you indicated this is an education system"
+        },
+        {
+          "id": "q4_exam_monitoring",
+          "question": "[CONDITIONAL] Does your system monitor exam behavior, proctor exams, or detect cheating?",
+          "type": "choice",
+          "required": false,
+          "showIfQuestion": "is_education_system",
+          "showIfAnswer": "Yes",
+          "options": [
+            "Yes - monitors behavior or detects cheating during exams",
+            "Yes - proctors exams remotely",
+            "Yes - analyzes exam patterns to detect anomalies",
+            "Yes - but with human review",
+            "No"
+          ],
+          "guidance": "Exam monitoring and cheating detection systems affect student assessments and can impact educational outcomes.",
+          "helpText": "This question is only shown if you indicated this is an education system"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "OPTIONAL Questions (Recommended)",
+      "sectionDescription": "These questions are optional but recommended to provide a comprehensive assessment of your system's compliance status.",
+      "questions": [
+        {
+          "id": "q8_categorization_sensitive",
+          "question": "[OPTIONAL] Does your system categorize, profile, or make inferences about individuals based on sensitive attributes?",
+          "type": "choice",
+          "required": false,
+          "options": [
+            "Yes - categorizes based on race, ethnicity, color, or national origin",
+            "Yes - categorizes based on sex, gender, or sexual orientation",
+            "Yes - categorizes based on disability status",
+            "Yes - categorizes based on other sensitive attributes",
+            "Yes - but we have measures to prevent discrimination",
+            "No - does not make such categorizations"
+          ],
+          "guidance": "Systems that categorize based on sensitive attributes raise fairness and discrimination concerns. Even if not explicitly high-risk, these systems require fairness assessment.",
+          "helpText": "Sensitive attributes = protected characteristics like race, gender, disability, religion, etc."
+        },
+        {
+          "id": "human_oversight",
+          "question": "[OPTIONAL] What level of human oversight does your system have?",
+          "type": "choice",
+          "required": false,
+          "options": [
+            "No human oversight - fully autonomous",
+            "Minimal - humans can only override in emergencies",
+            "Moderate - humans review some decisions",
+            "Strong - humans review all significant decisions",
+            "Full - humans make final decisions using system recommendations"
+          ],
+          "guidance": "Human oversight is a key mitigation for high-risk AI systems and is required for many Annex I categories.",
+          "helpText": "Human oversight reduces risk and is often required for compliance"
+        },
+        {
+          "id": "transparency",
+          "question": "[OPTIONAL] Can the system explain its decisions or provide reasoning to end-users?",
+          "type": "choice",
+          "required": false,
+          "options": [
+            "Yes - provides detailed explanations",
+            "Yes - provides basic reasoning",
+            "Partially - explains some decisions",
+            "No - provides no explanation",
+            "Not applicable"
+          ],
+          "guidance": "Transparency and explainability are required compliance obligations for high-risk systems.",
+          "helpText": "Explainability refers to the ability to understand why the system made a decision"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "Additional Information",
+      "sectionDescription": "Optional additional context that may be relevant for the compliance assessment",
+      "questions": [
+        {
+          "id": "additional_notes",
+          "question": "Any additional information relevant to EU AI Act compliance?",
+          "type": "text-long",
+          "required": false,
+          "helpText": "Example: 'System is still in testing phase', 'We have completed a DPIA', 'System operates only in specific EU member states', etc."
+        }
+      ]
+    }
+  ],
+  "completionMessage": "Thank you for completing the EU AI Act Compliance Assessment Questionnaire. Your responses will be analyzed to determine your system's risk classification and applicable compliance obligations under the EU AI Act.",
+  "mandatoryQuestionSummary": {
+    "total_mandatory": 5,
+    "mandatory_questions": [
+      "Q5 - Recruitment/Selection",
+      "Q6 - Employment Conditions",
+      "Q7 - Biometric Identification",
+      "Q9 - Critical Infrastructure",
+      "Q10 - Credit Scoring"
+    ],
+    "conditional_mandatory": {
+      "condition": "System operates in education/training sector",
+      "questions": [
+        "Q1 - Education Admission",
+        "Q2 - Learning Outcomes",
+        "Q3 - Education Level",
+        "Q4 - Exam Monitoring"
+      ]
+    },
+    "optional_questions": [
+      "Q8 - Sensitive Attribute Categorization",
+      "Human Oversight Level",
+      "Transparency/Explainability"
+    ]
+  }
+}

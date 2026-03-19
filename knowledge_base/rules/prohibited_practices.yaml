@@ -1,0 +1,78 @@
+# PROHIBITED PRACTICES RULES
+# Article 5 of EU AI Act 2024/1689
+# These rules define absolute prohibitions that override all other classifications
+
+prohibited_practices:
+  
+  # Subliminal Manipulation
+  subliminal_manipulation:
+    name: "Subliminal Manipulation"
+    article: 5
+    annex: null
+    condition: |
+      System deploys subliminal techniques beyond person's consciousness
+      AND intention to materially distort behavior
+      AND likely to cause harm
+    risk_level: "PROHIBITED"
+    confidence: 0.95
+    keywords:
+      - "subliminal"
+      - "subconscious"
+      - "manipulation"
+    description: |
+      Placing on the market or using AI systems that deploy subliminal 
+      techniques beyond a person's consciousness with intention to materially 
+      distort behavior causing harm is prohibited under Article 5(1)(a).
+
+  # Social Scoring
+  social_scoring:
+    name: "Social Scoring Based on Behavior"
+    article: 5
+    annex: null
+    condition: |
+      System performs social scoring based on social behavior or personal characteristics
+      AND has potential for unfair categorization or treatment of individuals or groups
+      AND impacts civically important activities
+    risk_level: "PROHIBITED"
+    confidence: 0.95
+    keywords:
+      - "social scoring"
+      - "behavioral scoring"
+      - "social credit"
+      - "citizen scoring"
+    description: |
+      Placing on market AI systems for social scoring that categorize individuals 
+      unfairly or impact civic activities is prohibited under Article 5(1)(b).
+
+  # Real-Time Remote Biometric Identification
+  real_time_biometric_identification:
+    name: "Real-Time Remote Biometric Identification (Law Enforcement)"
+    article: 5
+    annex: null
+    condition: |
+      System performs real-time remote biometric identification (face, iris, fingerprint)
+      AND deployed by law enforcement
+      AND NOT searching for specific identified person
+      AND NOT preventing imminent threat to life
+      AND NOT authorized under national law exceptions
+    risk_level: "PROHIBITED"
+    confidence: 0.95
+    keywords:
+      - "facial recognition"
+      - "real-time biometric"
+      - "live facial identification"
+      - "remote biometric identification"
+      - "iris recognition"
+      - "fingerprint matching"
+    description: |
+      Using real-time remote biometric identification for law enforcement 
+      is prohibited under Article 5(1)(c) except for narrow exceptions:
+      - Searching for specific identified person
+      - Preventing imminent threat to life
+      - Special national law authorizations
+
+# RULE VERSIONING
+_version: "1.0"
+_last_updated: "2026-03-12"
+_regulation_reference: "EU 2024/1689"
+_author: "AI Compliance Sherpa"
