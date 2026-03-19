@@ -1,0 +1,27 @@
+{
+  "regulation": "EU 2024/1689",
+  "title": "Regulation of the European Parliament and of the Council laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)",
+  "source": "EUR-Lex",
+  "official_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+  "version_date": "2024-05-22",
+  "effective_date": "2025-02-02",
+  "full_application_date": "2026-05-02",
+  "checksum": "eu_ai_act_2024_1689_official_version",
+  "last_updated": "2026-03-12",
+  "articles_covered": [5, 6, 9, 10, 13, 14],
+  "annexes_covered": ["Annex I", "Annex II", "Annex III", "Annex IV"],
+  "documentation": {
+    "regulation_text": "regulation_2024_1689.txt",
+    "annexes": [
+      "annex_I.txt",
+      "annex_II.txt", 
+      "annex_III.txt",
+      "annex_IV.txt"
+    ]
+  },
+  "update_process": {
+    "frequency": "monthly",
+    "monitoring_sources": ["EUR-Lex", "EU AI Office", "EDPB"],
+    "change_log": "Changes tracked via version control"
+  }
+}

@@ -1,0 +1,391 @@
+[
+  {
+    "name": "Resume Screening System",
+    "purpose": "Automatically filter job candidates based on resume analysis",
+    "basic_info": {
+      "data_types": "Names, email addresses, education history, work experience, skills, qualifications",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Employment"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": {
+        "answer": "yes",
+        "details": "System analyzes CVs and filters candidates before human review",
+        "data_processed": ["Full name", "Contact information", "Educational background", "Work history", "Skills", "Certifications"],
+        "decision_logic": "Keyword matching, experience level thresholds, degree requirements",
+        "risks": "Potential bias against certain educational backgrounds, gender discrimination, age discrimination"
+      },
+      "q6_employment_conditions": {
+        "answer": "no",
+        "details": "System only used for initial screening, not for performance evaluation or promotion decisions"
+      },
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": {
+        "answer": "potential",
+        "details": "May infer gender, age, nationality from names and work history patterns, not explicitly designed for this"
+      },
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Makes autonomous recruitment decisions directly affecting fundamental rights (employment access)"
+  },
+  {
+    "name": "Invoice Fraud Detection System",
+    "purpose": "Analyze invoices using fine-tuned Donut model for fraud detection and classification",
+    "basic_info": {
+      "data_types": "Invoice PDF documents, vendor information, line items, amounts, payment history, supplier data",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Finance"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": {
+        "answer": "yes",
+        "details": "System makes autonomous decisions affecting financial transactions and accounts payable approval",
+        "model_type": "Fine-tuned Donut (Document Understanding Transformer) model",
+        "decision_scope": "Flags invoices for fraud, determines approval status, calculates risk scores",
+        "data_extraction": ["Vendor name", "Invoice amount", "Line item details", "Tax information", "Payment terms", "Account coding"],
+        "fraud_detection_logic": ["Duplicate invoice detection", "Amount anomaly detection (compared to historical patterns)", "Vendor validation against approved suppliers", "Line item consistency analysis", "Payment terms risk assessment"],
+        "financial_impact": "All flagged invoices bypass automatic payment processing, affecting cash flow and vendor relationships"
+      }
+    },
+    "ml_model_details": {
+      "architecture": "Fine-tuned Donut model for document understanding",
+      "training_data": "Historical invoices from company data (6+ months)",
+      "output": "Classification scores (fraud probability 0.0-1.0), extracted fields, risk flags",
+      "accuracy_metrics": "93% fraud detection rate, 2% false positive rate on test set"
+    },
+    "risks": {
+      "discrimination": "If training data biased toward certain vendor types or invoice patterns",
+      "false_positives": "Legitimate invoices marked as fraud could damage vendor relationships",
+      "transparency": "Finance staff may not understand why system flagged specific invoices",
+      "over_reliance": "Teams may blindly trust fraud scores without human verification"
+    },
+    "safeguards": {
+      "human_review": "All flagged invoices reviewed by finance team with explainability report",
+      "confidence_threshold": "Only invoices with >85% fraud confidence automatically withheld",
+      "appeal_process": "Vendors can dispute fraud flags with supporting documentation",
+      "explainability": "System shows which fields and patterns triggered fraud flags",
+      "monitoring": "Weekly audit of false positives and missed fraud cases",
+      "retraining": "Model updated monthly with new labeled invoice samples"
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Makes autonomous financial decisions affecting payment processing, vendor relationships, and cash flow. Uses ML model requiring careful monitoring and human oversight."
+  },
+  {
+    "name": "Expense Report Analysis & Approval System",
+    "purpose": "Automatically analyze employee expense reports for compliance, fraud, and policy violations",
+    "basic_info": {
+      "data_types": "Receipt images, expense descriptions, amounts, employee information, merchant categories, timestamps, location data, historical expense patterns",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Finance"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": {
+        "answer": "yes",
+        "details": "System makes decisions directly affecting employee compensation and expense approval",
+        "decision_scope": "Automatically approves or flags expense reports for manual review",
+        "employment_impact": "Delays in approval affect employee cash flow and reimbursement timing"
+      },
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": {
+        "answer": "potential",
+        "details": "May infer spending patterns that reveal sensitive personal information (health expenses, religious activities, union membership)"
+      },
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "system_features": {
+      "policy_compliance": "Checks against expense policy (limits, allowed categories, documentation requirements)",
+      "fraud_detection": ["Duplicate receipt detection", "Amount anomaly (outliers compared to employee history)", "Merchant category validation", "Timestamp inconsistencies"],
+      "auto_approval": "Low-risk, compliant expenses (< policy limits) auto-approved",
+      "approval_rates": "~60% auto-approved, ~40% flagged for manual review"
+    },
+    "risks": {
+      "privacy": "Detailed analysis of personal spending patterns reveals sensitive information about employee lives",
+      "discrimination": "Expense patterns may reveal protected characteristics (religious, health, union activities)",
+      "financial_impact": "Employees facing repeated rejections may face disciplinary action"
+    },
+    "safeguards": {
+      "human_review": "All flagged expenses reviewed by manager with explainability report",
+      "transparency": "Employees shown which policy rules were violated",
+      "appeal_process": "Employees can explain exceptions (e.g., 'higher meal cost due to dietary requirement')",
+      "privacy": "Sensitive merchant categories (pharmacies, counseling) flagged for manual review only",
+      "monitoring": "Regular audits for bias in approval patterns across employee demographics",
+      "policy_review": "Annual review of policy limits to ensure they're reasonable"
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Makes autonomous decisions about employee compensation/reimbursement; analyzes sensitive personal spending patterns; uses ML model affecting employment conditions"
+  },
+  {
+    "name": "Customer Support Chatbot",
+    "purpose": "Provide instant automated responses to common customer support queries",
+    "basic_info": {
+      "data_types": "Customer messages, conversation history, product information",
+      "autonomous": false,
+      "affects_rights": false,
+      "use_case": "Customer Service"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "additional_context": {
+      "human_in_loop": true,
+      "transparency": "Users are informed they are chatting with an AI",
+      "override_capability": "Customers can always escalate to human agents"
+    },
+    "expected_classification": "LIMITED_RISK",
+    "reasoning": "Primarily transparent AI requiring user awareness; no high-risk decisions, human oversight available"
+  },
+  {
+    "name": "Email Spam Filter",
+    "purpose": "Automatically filter and classify spam emails from user inboxes",
+    "basic_info": {
+      "data_types": "Email sender, subject lines, content patterns, links, metadata",
+      "autonomous": true,
+      "affects_rights": false,
+      "use_case": "Email Management"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "additional_context": {
+      "direct_impact": "No direct impact on fundamental rights or legal decisions",
+      "user_control": "Users can easily recover filtered emails, adjust settings",
+      "reversibility": "Fully reversible; false positives do not create lasting harm"
+    },
+    "expected_classification": "MINIMAL_RISK",
+    "reasoning": "Cannot affect fundamental rights; no legal consequences; user has full control and can override"
+  },
+  {
+    "name": "Credit Scoring and Loan Approval System",
+    "purpose": "Automatically calculate credit scores and determine loan eligibility for applicants",
+    "basic_info": {
+      "data_types": "Income history, employment records, payment history, credit card data, loan history, bank statements, personal financial data",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Finance"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": {
+        "answer": "potential",
+        "details": "May infer protected characteristics (age, gender, marital status) from financial data patterns"
+      },
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": {
+        "answer": "yes",
+        "details": "Core function is credit scoring and creditworthiness assessment",
+        "decision_scope": "Determines loan approval, interest rates, credit limits",
+        "data_sources": ["Income records", "Payment history (6+ years)", "Existing debt levels", "Employment stability", "Savings patterns"],
+        "decision_logic": "Statistical models including debt-to-income ratio, repayment probability, risk assessment"
+      }
+    },
+    "risks": {
+      "discrimination": "Model may have been trained on biased historical data",
+      "transparency": "Applicants may not understand why they were rejected",
+      "false_negatives": "Qualified applicants wrongly rejected, impacting access to credit"
+    },
+    "safeguards": {
+      "human_review": "All rejected applications reviewed by human credit officer",
+      "explainability": "System provides top 5 factors influencing rejection decision",
+      "appeal_process": "Applicants can request reassessment with additional information",
+      "bias_monitoring": "Annual audit for discrimination across protected characteristics",
+      "regulatory_compliance": "Compliance with consumer credit protection directives"
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Makes autonomous decisions directly affecting access to essential financial services; high impact on fundamental rights"
+  },
+  {
+    "name": "Facial Recognition for Border Control",
+    "purpose": "Real-time facial identification of travelers at airport borders and checkpoints",
+    "basic_info": {
+      "data_types": "Facial images, video feeds, biometric templates, travel documents, watchlists, personal identifiers",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Law enforcement"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": {
+        "answer": "yes",
+        "details": "Real-time facial recognition system identifying individuals at borders",
+        "scope": "Large-scale deployment with continuous monitoring",
+        "data_retention": "Biometric templates retained in national database indefinitely",
+        "error_rates": "False positive rate ~2-5% depending on conditions"
+      },
+      "q8_categorization_sensitive": {
+        "answer": "yes",
+        "details": "May infer nationality, ethnicity, age from facial features"
+      },
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "legal_restrictions": {
+      "article_5_violation": "May violate Article 5 prohibition on real-time biometric ID unless strict exceptions apply",
+      "exception_criteria": "Only permitted when searching for specific identified persons or imminent public safety threat",
+      "mass_surveillance_concern": "General surveillance of all travelers raises serious fundamental rights issues"
+    },
+    "safeguards": {
+      "human_oversight": "All matches require human verification before action",
+      "transparency": "Clear signage indicating use of facial recognition",
+      "data_rights": "Individuals can request data deletion (subject to legal holds)",
+      "audit_trail": "Complete logging of all matches and actions taken",
+      "regular_audits": "Independent audits for accuracy and bias, particularly gender/ethnicity"
+    },
+    "expected_classification": "PROHIBITED",
+    "reasoning": "Real-time biometric identification without specific person search is explicitly prohibited under Article 5, unless narrow exception applies"
+  },
+  {
+    "name": "Electricity Grid Load Balancing AI",
+    "purpose": "Optimize electricity distribution and predict demand in smart grid management",
+    "basic_info": {
+      "data_types": "Real-time consumption data, weather patterns, historical load data, renewable generation data",
+      "autonomous": true,
+      "affects_rights": false,
+      "use_case": "Critical Infrastructure"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": {
+        "answer": "yes",
+        "details": "AI system operates as core component of electricity grid infrastructure",
+        "infrastructure_type": "Critical digital infrastructure - electricity distribution",
+        "operational_role": "Load forecasting, demand prediction, renewable integration management",
+        "failure_impact": "System failure could cause widespread blackouts affecting essential services"
+      },
+      "q10_credit_scoring": false
+    },
+    "safety_measures": {
+      "human_monitoring": "24/7 control room staff monitor system recommendations",
+      "autonomous_actions": "Can autonomously adjust non-critical loads; critical decisions require approval",
+      "fallback_systems": "Redundant systems and manual override capability",
+      "testing_requirements": "Stress tested for 99.99% availability and edge cases"
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Operates as safety component in critical infrastructure; failure could impact public safety and essential services"
+  },
+  {
+    "name": "Content Moderation & Deepfake Detection Platform",
+    "purpose": "Detect AI-generated content, deepfakes, and policy violations in uploaded media",
+    "basic_info": {
+      "data_types": "Images, videos, audio files, metadata, user content",
+      "autonomous": false,
+      "affects_rights": false,
+      "use_case": "Media Analysis"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "design_features": {
+      "human_review": "All detections flagged for human moderator review before action",
+      "decision_authority": "Humans make final decision on content removal",
+      "no_autonomous_action": "System assists decision-making only; does not autonomously remove content",
+      "appeal_process": "Content creators can appeal removals with manual review"
+    },
+    "expected_classification": "LIMITED_RISK",
+    "reasoning": "System is advisory only; humans make all enforcement decisions; transparency requirements apply but no high-risk autonomous action"
+  },
+  {
+    "name": "Anti-Money Laundering (AML) Transaction Monitoring",
+    "purpose": "Monitor financial transactions for suspicious patterns and potential money laundering activities",
+    "basic_info": {
+      "data_types": "Transaction amounts, frequency, beneficiary details, payee information, account holder identity, transaction history, geographic data",
+      "autonomous": true,
+      "affects_rights": true,
+      "use_case": "Finance"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": {
+        "answer": "yes",
+        "details": "May flag transactions from specific countries, industries, or demographics; could create disparate impact"
+      },
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": {
+        "answer": "yes",
+        "details": "System makes autonomous decisions affecting financial transaction processing and customer relationships",
+        "decision_scope": "Flags suspicious transactions, triggers customer due diligence, can recommend account closure",
+        "false_positive_impact": "Legitimate customers flagged for fraud can have accounts frozen, affecting access to banking services"
+      }
+    },
+    "ml_model_details": {
+      "detection_patterns": ["Structuring (multiple small transactions to avoid thresholds)", "Unusual transaction frequency or amounts", "High-risk jurisdictions or beneficiaries", "Transaction timing inconsistencies", "Mismatch between stated purpose and behavior"],
+      "accuracy": "85% detection rate, 8% false positive rate"
+    },
+    "risks": {
+      "discrimination": "System could disproportionately flag transactions from certain countries or communities",
+      "accessibility": "Legitimate customers subjected to repeated due diligence demands",
+      "financial_exclusion": "False positives can lead to account closure, pushing customers to unregulated sector",
+      "bias": "Model trained on historical AML cases may perpetuate existing biases"
+    },
+    "safeguards": {
+      "human_review": "All flagged transactions reviewed by AML compliance officer",
+      "customer_notification": "Customers informed when additional due diligence required",
+      "appeal_process": "Customers can provide context for flagged transactions",
+      "bias_monitoring": "Quarterly audit for disparate impact analysis by geography, demographics, transaction type",
+      "regulatory_compliance": "Compliance with FATF recommendations and local AML regulations",
+      "threshold_tuning": "Regular adjustment of detection thresholds to minimize false positives"
+    },
+    "expected_classification": "HIGH_RISK",
+    "reasoning": "Makes autonomous decisions about financial transactions affecting customer access to banking services; potential discrimination risks; significant impact on financial inclusion"
+  },
+  {
+    "name": "Social Media Content Recommendation Engine",
+    "purpose": "Recommend posts and content to users based on engagement patterns and preferences",
+    "basic_info": {
+      "data_types": "User behavior, engagement patterns, content preferences, interaction history, likes/shares",
+      "autonomous": true,
+      "affects_rights": false,
+      "use_case": "Content Recommendation"
+    },
+    "eu_ai_act_questions": {
+      "q5_recruitment_selection": false,
+      "q6_employment_conditions": false,
+      "q7_biometric_identification": false,
+      "q8_categorization_sensitive": false,
+      "q9_critical_infrastructure": false,
+      "q10_credit_scoring": false
+    },
+    "characteristics": {
+      "user_control": "Users can manually select content preferences",
+      "reversibility": "Recommendations easily overridden; no permanent consequences",
+      "no_legal_impact": "Recommendations do not create legal or contractual obligations",
+      "non_essential": "User can ignore recommendations without consequence"
+    },
+    "expected_classification": "MINIMAL_RISK",
+    "reasoning": "No fundamental rights impact; users maintain full control; no legal or significant life consequences from recommendations"
+  }
+]

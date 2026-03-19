@@ -1,0 +1,205 @@
+# RISK MAPPING
+# Maps questionnaire responses to risk classification and applicable articles
+# EU AI Act 2024/1689
+
+risk_mapping:
+
+  # Question 5: Recruitment and Selection
+  q5_recruitment_selection:
+    question: "Does the system make recruitment or selection decisions?"
+    article_reference: 6
+    annex_reference: "Annex I(4)(a)"
+    if_true:
+      risk_classification: "HIGH_RISK"
+      applicable_articles: [6, 9, 10, 13, 14]
+      domain: "recruitment_selection"
+      confidence_boost: 0.10  # 10% boost to confidence
+      compliance_status: "MANDATORY COMPLIANCE"
+      obligations:
+        - "Conduct impact assessment on fundamental rights"
+        - "Implement human oversight in hiring process"
+        - "Maintain transparency with applicants"
+        - "Ensure fairness across applicant groups"
+        - "Document training data sources"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+
+  # Question 6: Employment Conditions
+  q6_employment_conditions:
+    question: "Does the system evaluate employment conditions, tasks, or performance?"
+    article_reference: 6
+    annex_reference: "Annex I(4)(b)"
+    if_true:
+      risk_classification: "HIGH_RISK"
+      applicable_articles: [6, 9, 10, 13, 14]
+      domain: "employment_evaluation"
+      confidence_boost: 0.10
+      compliance_status: "MANDATORY COMPLIANCE"
+      obligations:
+        - "Assess impact on employment rights"
+        - "Implement worker-facing transparency"
+        - "Enable human review of recommendations"
+        - "Provide appeal mechanism"
+        - "Monitor deployment outcomes"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+    if_potential:
+      risk_classification: "LIMITED_RISK"
+      applicable_articles: [13, 14]
+      confidence_boost: 0.05
+      obligations:
+        - "Provide transparency about system use"
+        - "Enable human override mechanism"
+
+  # Question 7: Biometric Identification
+  q7_biometric_identification:
+    question: "Does the system perform biometric identification?"
+    article_reference: 5,6
+    annex_reference: "Annex I(1)"
+    if_true:
+      sub_question: "Is it real-time remote biometric identification for law enforcement?"
+      if_real_time_law_enforcement:
+        risk_classification: "PROHIBITED"
+        applicable_articles: [5]
+        compliance_status: "PROHIBITED - DO NOT DEPLOY"
+        exceptions:
+          - "Searching for specific identified person"
+          - "Preventing imminent threat to life"
+          - "Special authorization under national law"
+        exceptions_require: "Legal review and national authority approval"
+      if_not_excepted:
+        risk_classification: "HIGH_RISK"
+        applicable_articles: [6, 9, 10, 13, 14]
+        domain: "biometric_identification"
+        confidence_boost: 0.10
+        obligations:
+          - "Ensure accuracy testing across demographics"
+          - "Implement strong privacy safeguards"
+          - "Obtain explicit consent"
+          - "Implement data minimization"
+          - "Audit for bias regularly"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+
+  # Question 8: Sensitive Attribute Categorization
+  q8_categorization_sensitive:
+    question: "Does the system categorize individuals based on sensitive attributes?"
+    article_reference: 10
+    annex_reference: "Annex I"
+    sensitive_attributes:
+      - "Race or ethnicity"
+      - "Gender"
+      - "Disability or health status"
+      - "Religion or belief"
+      - "Sexual orientation or gender identity"
+      - "Political opinion"
+      - "Union membership"
+      - "Genetic or biometric data for identification"
+    if_true:
+      risk_classification: "HIGH_RISK"
+      applicable_articles: [6, 9, 10, 13, 14]
+      domain: "sensitive_attribute_categorization"
+      confidence_boost: 0.10
+      compliance_status: "MANDATORY COMPLIANCE"
+      obligations:
+        - "Assess discrimination risks before deployment"
+        - "Test for bias across protected attributes"
+        - "Implement fairness safeguards"
+        - "Provide transparency to affected individuals"
+        - "Enable right to object to categorization"
+        - "Establish monitoring for disparate impact"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+    if_potential:
+      risk_classification: "LIMITED_RISK"
+      applicable_articles: [10, 13, 14]
+      confidence_boost: 0.05
+      obligations:
+        - "Conduct fairness impact assessment"
+        - "Monitor for unintended inferences"
+        - "Provide transparency"
+
+  # Question 9: Critical Infrastructure
+  q9_critical_infrastructure:
+    question: "Is the system a critical infrastructure component?"
+    article_reference: 6
+    annex_reference: "Annex I(2)"
+    critical_sectors:
+      - "Energy (electricity, gas, oil)"
+      - "Water and sewage"
+      - "Transport (rail, road, maritime, aviation)"
+      - "Banking and financial market infrastructure"
+      - "Health (hospitals, emergency services)"
+      - "Digital infrastructure"
+      - "Space"
+    if_true:
+      risk_classification: "HIGH_RISK"
+      applicable_articles: [6, 9, 10, 13, 14]
+      domain: "critical_infrastructure"
+      confidence_boost: 0.10
+      compliance_status: "MANDATORY HIGH SAFETY REQUIREMENTS"
+      obligations:
+        - "Implement redundancy and failsafe mechanisms"
+        - "Ensure 24/7 human oversight capability"
+        - "Conduct safety-critical testing"
+        - "Maintain manual override capability"
+        - "Document risk assessment"
+        - "Plan for emergency scenarios"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+
+  # Question 10: Credit Scoring / Financial Decisions
+  q10_credit_scoring:
+    question: "Does the system assess credit scoring or creditworthiness?"
+    article_reference: 6
+    annex_reference: "Annex I(5)"
+    financial_decision_types:
+      - "Loan approval/rejection"
+      - "Interest rate determination"
+      - "Credit limit setting"
+      - "Insurance underwriting"
+      - "Mortgage approval"
+      - "Creditworthiness assessment"
+    if_true:
+      risk_classification: "HIGH_RISK"
+      applicable_articles: [6, 9, 10, 13, 14]
+      domain: "credit_scoring"
+      confidence_boost: 0.10
+      compliance_status: "MANDATORY COMPLIANCE"
+      obligations:
+        - "Conduct risk assessment before deployment"
+        - "Implement human review of rejections"
+        - "Provide transparent explanations"
+        - "Enable applicant appeal process"
+        - "Audit for discrimination risk"
+        - "Comply with consumer credit directives"
+    if_false:
+      risk_classification: "NOT_APPLICABLE"
+      applicable_articles: []
+      confidence_boost: 0.0
+
+# CLASSIFICATION LOGIC
+classification_logic:
+  step_1: "Check all PROHIBITED rules first"
+  step_2: "If PROHIBITED, return PROHIBITED (confidence 0.95)"
+  step_3: "Check all HIGH_RISK questions (Q5-Q10)"
+  step_4: "If any HIGH_RISK answer=true, classification = HIGH_RISK"
+  step_5: "Calculate confidence based on number of HIGH_RISK criteria met"
+  step_6: "If no HIGH_RISK criteria met, classification = MINIMAL_RISK"
+  step_7: "Include regulatory version and rule version in result"
+
+# RULE VERSIONING
+_version: "2.0"
+_last_updated: "2026-03-12"
+_regulation_reference: "EU 2024/1689"
+_author: "AI Compliance Sherpa"

@@ -1,0 +1,176 @@
+# HIGH-RISK AI SYSTEM DOMAINS
+# Article 6 of EU AI Act 2024/1689, referencing Annex I
+# These rules define systems that qualify as high-risk under the regulation
+
+high_risk_domains:
+
+  recruitment_selection:
+    name: "AI systems intended to be used for recruitment and selection of natural persons"
+    annex_reference: "Annex I(4)(a)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q5_recruitment_selection
+    affected_rights:
+      - "Access to employment"
+      - "Non-discrimination"
+      - "Fundamental labor rights"
+    description: |
+      AI systems used to filter, score, or select candidates for employment 
+      positions based on CV analysis, background verification, or automated 
+      interviews are classified as HIGH-RISK under Annex I(4)(a).
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and governance
+      - Article 13: Transparency to affected persons
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Human review of all flagged candidates
+      - Documentation of training data sources
+      - Bias testing before deployment
+      - Regular performance audits
+      - Clear appeals process
+
+  employment_evaluation:
+    name: "AI systems intended to be used for evaluation of workers and job applicants"
+    annex_reference: "Annex I(4)(b)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q6_employment_conditions
+    affected_rights:
+      - "Employment conditions"
+      - "Fair remuneration"
+      - "Protection from discrimination"
+    description: |
+      AI systems used to evaluate worker performance, assess suitability for 
+      tasks, or determine employment conditions (wages, promotions, discipline) 
+      are classified as HIGH-RISK under Annex I(4)(b).
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and governance
+      - Article 13: Transparency to workers
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Manager review of AI recommendations
+      - Employee transparency about evaluation
+      - Right to appeal decisions
+      - Regular bias monitoring
+      - Documentation of decision factors
+
+  credit_scoring:
+    name: "AI systems intended to determine access to credit or assess creditworthiness"
+    annex_reference: "Annex I(5)(a)-(b)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q10_credit_scoring
+    affected_rights:
+      - "Access to essential financial services"
+      - "Protection from discrimination"
+      - "Right to explanation of decisions"
+    description: |
+      AI systems used to calculate credit risk, assess creditworthiness, 
+      determine loan eligibility, or set interest rates are classified as 
+      HIGH-RISK under Annex I(5)(a)-(b).
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and governance
+      - Article 13: Transparency to applicants
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Human review of rejections
+      - Explainability of scoring factors
+      - Right to appeal with new information
+      - Annual bias audits per protected characteristics
+      - Compliance with consumer credit directives
+
+  biometric_identification:
+    name: "AI systems intended to perform biometric identification"
+    annex_reference: "Annex I(1)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q7_biometric_identification
+    affected_rights:
+      - "Privacy and data protection"
+      - "Right to be identified correctly"
+      - "Protection from surveillance"
+    description: |
+      AI systems that perform biometric identification (facial recognition, 
+      iris recognition, fingerprint matching) for purposes other than 
+      law enforcement exceptions are classified as HIGH-RISK under Annex I(1).
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and governance
+      - Article 13: Transparency to individuals
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Explicit consent from individuals
+      - Accuracy testing across demographics
+      - Regular bias audits
+      - Secure data storage with encryption
+      - Clear purpose limitation and retention policies
+
+  sensitive_attribute_categorization:
+    name: "AI systems that categorize individuals based on sensitive attributes"
+    annex_reference: "Annex I (inferred from Article 10)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q8_categorization_sensitive
+    affected_rights:
+      - "Protection from discrimination"
+      - "Equal treatment"
+      - "Privacy"
+    description: |
+      AI systems that categorize individuals based on sensitive attributes 
+      (race, ethnicity, gender, disability, religion, political opinion, 
+      union membership, genetic or biometric data for identification) are 
+      classified as HIGH-RISK under Article 10.
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and fairness governance
+      - Article 13: Transparency to individuals
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Privacy-by-design implementation
+      - Fairness impact assessment
+      - Regular bias testing
+      - Data minimization (collect only necessary data)
+      - Clear transparency about categorization
+      - Right to object to automated categorization
+
+  critical_infrastructure:
+    name: "AI systems used in safety-critical infrastructure"
+    annex_reference: "Annex I(2)"
+    articles: [6, 9, 10, 13, 14]
+    questions_trigger:
+      - q9_critical_infrastructure
+    affected_rights:
+      - "Public safety"
+      - "Protection of life and health"
+      - "Continuity of essential services"
+    description: |
+      AI systems used to operate or control critical infrastructure 
+      (electricity grids, water systems, traffic systems, emergency services) 
+      are classified as HIGH-RISK under Annex I(2).
+    requirements:
+      - Article 6: Classification as high-risk
+      - Article 9: Risk assessment required
+      - Article 10: Data quality and governance
+      - Article 13: Transparency to operators
+      - Article 14: Human oversight mandatory
+    safeguards_needed:
+      - Continuous monitoring and control
+      - Automatic shutdown capabilities
+      - Fallback to manual control
+      - Redundant systems
+      - 24/7 operator oversight
+      - Stress testing for edge cases
+
+# RULE VERSIONING
+_version: "1.0"
+_last_updated: "2026-03-12"
+_regulation_reference: "EU 2024/1689, Annex I"
+_author: "AI Compliance Sherpa"
